@@ -7,10 +7,12 @@ class State(rx.State):
     """The app state."""
 
 
+@rx.page(route="/")
 def index() -> rx.Component:
     return landing_page()
 
 
+@rx.page(route="/demo")
 def demo() -> rx.Component:
     return demo_page()
 
@@ -24,5 +26,3 @@ app = rx.App(
     style=style,
     stylesheets=["/fonts/font.css", "/animations.css"],
 )
-app.add_page(index)
-app.add_page(demo, route="/demo")
