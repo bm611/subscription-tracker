@@ -22,7 +22,7 @@ style = {
 
 app = rx.App(
     style=style,
-    stylesheets=["/fonts/font.css"],
+    stylesheets=["/fonts/font.css", "/animations.css"],
 )
 app.add_page(index)
 app.add_page(demo, route="/demo")
