@@ -25,7 +25,7 @@ class SubscriptionTable(rx.State):
             "active": True,
         },
         {
-            "service": "Adobe Creative Cloud",
+            "service": "Adobe",
             "logo": "https://www.adobe.com/content/dam/cc/icons/Adobe_Corporate_Horizontal_Red_HEX.svg",
             "category": "Software",
             "price": 52.99,
@@ -71,23 +71,15 @@ def subscription_table():
     def render_subscription_row(data: dict[str, str | bool | float]):
         return rx.table.row(
             rx.table.cell(
-                rx.hstack(
-                    rx.image(
-                        src=data["logo"],
-                        width="32px",
-                        height="32px",
-                        border_radius="4px",
+                rx.vstack(
+                    rx.text(
+                        data["service"],
+                        size="1",
+                        weight="bold",
                     ),
-                    rx.vstack(
-                        rx.text(
-                            data["service"],
-                            size="1",
-                            weight="bold",
-                        ),
-                        rx.text(data["category"], size="1"),
-                        spacing="0",
-                    ),
-                    align="center",
+                    rx.text(data["category"], size="1"),
+                    spacing="0",
+                    align="start",
                 )
             ),
             rx.table.cell(

@@ -75,25 +75,28 @@ def pie_chart() -> rx.Component:
     ]
 
     return rx.el.div(
-        rx.recharts.pie_chart(
-            rx.recharts.pie(
-                rx.foreach(
-                    ["#3b82f6", "#22c55e", "#06b6d4", "#ef4444", "#a855f7"],
-                    lambda color, index: rx.recharts.cell(fill=color),
+        rx.el.div(
+            rx.recharts.pie_chart(
+                rx.recharts.pie(
+                    rx.foreach(
+                        ["#3b82f6", "#22c55e", "#06b6d4", "#ef4444", "#a855f7"],
+                        lambda color, index: rx.recharts.cell(fill=color),
+                    ),
+                    data=data,
+                    data_key="value",
+                    name_key="name",
+                    stroke="0",
+                    inner_radius=50,
+                    outer_radius=90,
+                    custom_attrs={"paddingAngle": 3, "cornerRadius": 4},
                 ),
-                data=data,
-                data_key="value",
-                name_key="name",
-                stroke="0",
-                inner_radius=40,
-                outer_radius=80,
-                custom_attrs={"paddingAngle": 2, "cornerRadius": 3},
+                get_tooltip(),
+                width="100%",
+                height=220,
             ),
-            get_tooltip(),
-            width="100%",
-            height=200,
+            class_name="flex justify-center items-center",
         ),
-        rx.hstack(
+        rx.el.div(
             rx.foreach(
                 [
                     ["Software", "blue"],
@@ -102,21 +105,21 @@ def pie_chart() -> rx.Component:
                     ["Streaming", "red"],
                     ["Gaming", "purple"],
                 ],
-                lambda key: rx.hstack(
-                    rx.box(class_name="w-3 h-3 rounded-sm", bg=rx.color(key[1])),
-                    rx.text(
-                        key[0],
-                        class_name="text-sm font-semibold",
-                        color=rx.color("slate", 11),
+                lambda key: rx.el.div(
+                    rx.el.div(
+                        class_name="w-3 h-3 rounded-full shadow-sm",
+                        style={"background-color": rx.color(key[1])},
                     ),
-                    align="center",
-                    spacing="2",
+                    rx.el.span(
+                        key[0],
+                        class_name="text-xs md:text-sm font-medium opacity-80",
+                    ),
+                    class_name="flex items-center gap-2",
                 ),
             ),
-            class_name="py-2 md:py-4 px-2 md:px-4 flex w-full justify-center flex-wrap gap-2 md:gap-4",
-            spacing="4",
+            class_name="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mt-4 px-2",
         ),
-        class_name="flex flex-col size-full relative",
+        class_name="flex flex-col w-full h-full justify-center",
     )
 
 
@@ -130,22 +133,33 @@ def bar_chart() -> rx.Component:
         {"month": "Jan", "amount": 108},
     ]
 
-    return rx.recharts.bar_chart(
-        rx.recharts.bar(
-            data_key="amount",
-            stroke="rgb(59, 130, 246)",
-            fill="rgb(59, 130, 246)",
-            radius=[4, 4, 0, 0],
+    return rx.el.div(
+        rx.recharts.bar_chart(
+            rx.recharts.bar(
+                rx.recharts.label_list(
+                    data_key="amount",
+                    position="top",
+                    custom_attrs={
+                        "fontSize": "12px",
+                        "fontWeight": "500",
+                        "fill": "currentColor",
+                        "dy": -4
+                    }
+                ),
+                data_key="amount",
+                stroke="rgb(59, 130, 246)",
+                fill="rgb(59, 130, 246)",
+                radius=[6, 6, 0, 0],
+            ),
+            get_x_axis("month"),
+            rx.recharts.y_axis(
+                hide=True,
+            ),
+            get_tooltip(),
+            data=data,
+            width="100%",
+            height=280,
+            margin={"left": 0, "right": 0, "top": 30, "bottom": 20},
         ),
-        get_x_axis("month"),
-        rx.recharts.y_axis(
-            axis_line=False,
-            tick_line=False,
-            custom_attrs={"fontSize": "12px"},
-        ),
-        get_cartesian_grid(),
-        get_tooltip(),
-        data=data,
-        width="100%",
-        height=250,
+        class_name="flex justify-center items-center w-full h-full",
     )
