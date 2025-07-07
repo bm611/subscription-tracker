@@ -20,36 +20,13 @@
 		format json # set access log format to json mode
 	}
 
-	# serve from the '.web/build/client' folder (reflex exports into the '.web/build/client' folder)
+	# serve from the '.web/_static' folder (reflex exports into the '.web/_static' folder)
 	root * .web/build/client
 
 	# enable gzipping responses
 	encode gzip
 
-	# IMPORTANT: Handle WebSocket connections for Reflex 0.8.0+
-	# This must come BEFORE the file_server directive
-	handle /_event {
-		reverse_proxy 127.0.0.1:8000 {
-			header_up Upgrade {>Upgrade}
-			header_up Connection {>Connection}
-			header_up Host {host}
-			header_up X-Real-IP {remote}
-			header_up X-Forwarded-For {remote}
-			header_up X-Forwarded-Proto {scheme}
-		}
-	}
-
-	# Handle API routes
-	handle /api/* {
-		reverse_proxy 127.0.0.1:8000 {
-			header_up Host {host}
-			header_up X-Real-IP {remote}
-			header_up X-Forwarded-For {remote}
-			header_up X-Forwarded-Proto {scheme}
-		}
-	}
-
-	# serve files from '.web/build/client'
+	# serve files from '.web/_static'
 	file_server
 
 	# allows for pretty paths
@@ -58,14 +35,7 @@
 	# the handle_path directive will strip /backend/ from the path before proxying
 	handle_path /backend/* {
 		# this strips the /backend/ prefix from the uri sent to the proxy address
-		reverse_proxy 127.0.0.1:8000 {
-			header_up Upgrade {>Upgrade}
-			header_up Connection {>Connection}
-			header_up Host {host}
-			header_up X-Real-IP {remote}
-			header_up X-Forwarded-For {remote}
-			header_up X-Forwarded-Proto {scheme}
-		} # proxy all requests for /backend/* to the backend with WebSocket support
+		reverse_proxy 127.0.0.1:8000 # proxy all requests for /backend/* to the backend
 	}
 
 	# rewrite any errors to the corresponding error page
