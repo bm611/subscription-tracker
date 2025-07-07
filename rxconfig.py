@@ -13,10 +13,12 @@ config = ReflextemplateConfig(
     telemetry_enabled=False,
     frontend_port=3000,  # default frontend port
     backend_port=8000,  # default backend port
-    # use https and the railway public domain with a backend route if available, otherwise default to a local address
-    api_url=f"https://{os.environ[railway_domain]}/backend"
+    # For production on Railway, we need to use the public domain
+    api_url=f"https://{os.environ[railway_domain]}"
     if railway_domain in os.environ
-    else "http://0.0.0.0:8000",
+    else "http://localhost:8000",
+    # Set backend host to bind to all interfaces in production
+    backend_host="0.0.0.0" if railway_domain in os.environ else "127.0.0.1",
     plugins=[
         rx.plugins.SitemapPlugin(),
         rx.plugins.TailwindV4Plugin(),
