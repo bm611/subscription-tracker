@@ -1,4 +1,5 @@
 import reflex as rx
+from recsub.data.url import logo_url
 
 
 def landing_page() -> rx.Component:
@@ -55,88 +56,30 @@ def landing_page() -> rx.Component:
                     ),
                     class_name="text-left max-w-lg mb-24",
                 ),
-                # Right side - Features (desktop only)
+                # Right side - Logo grid (desktop only)
                 rx.el.div(
+                    # Glowing border container
                     rx.el.div(
+                        # Logo grid
                         rx.el.div(
-                            # Analytics Feature
-                            rx.el.div(
+                            *[
                                 rx.el.div(
-                                    rx.icon(
-                                        tag="bar-chart-3",
-                                        class_name="w-6 h-6 text-indigo-500",
+                                    rx.el.img(
+                                        src=url,
+                                        alt="Subscription service logo",
+                                        class_name="w-12 h-12 object-contain transition-all duration-300 hover:opacity-80 transform hover:scale-105 rounded-md",
                                     ),
-                                    class_name="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-3",
-                                ),
-                                rx.el.h3(
-                                    "Smart Analytics",
-                                    class_name="text-lg font-semibold text-gray-800 mb-2",
-                                ),
-                                rx.el.p(
-                                    "Track spending patterns and subscription trends with detailed charts and insights.",
-                                    class_name="text-gray-600 text-sm",
-                                ),
-                                class_name="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-indigo-100/50 hover:shadow-xl transition-all duration-300",
-                            ),
-                            # Calendar View Feature
-                            rx.el.div(
-                                rx.el.div(
-                                    rx.icon(
-                                        tag="calendar",
-                                        class_name="w-6 h-6 text-indigo-500",
-                                    ),
-                                    class_name="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-3",
-                                ),
-                                rx.el.h3(
-                                    "Calendar View",
-                                    class_name="text-lg font-semibold text-gray-800 mb-2",
-                                ),
-                                rx.el.p(
-                                    "See all your upcoming billing dates in an intuitive calendar interface.",
-                                    class_name="text-gray-600 text-sm",
-                                ),
-                                class_name="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-indigo-100/50 hover:shadow-xl transition-all duration-300",
-                            ),
-                            # Notifications Feature
-                            rx.el.div(
-                                rx.el.div(
-                                    rx.icon(
-                                        tag="bell",
-                                        class_name="w-6 h-6 text-indigo-500",
-                                    ),
-                                    class_name="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-3",
-                                ),
-                                rx.el.h3(
-                                    "Smart Alerts",
-                                    class_name="text-lg font-semibold text-gray-800 mb-2",
-                                ),
-                                rx.el.p(
-                                    "Get notified before billing dates and track subscription changes automatically.",
-                                    class_name="text-gray-600 text-sm",
-                                ),
-                                class_name="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-indigo-100/50 hover:shadow-xl transition-all duration-300",
-                            ),
-                            # Budget Tracking Feature
-                            rx.el.div(
-                                rx.el.div(
-                                    rx.icon(
-                                        tag="dollar-sign",
-                                        class_name="w-6 h-6 text-indigo-500",
-                                    ),
-                                    class_name="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-3",
-                                ),
-                                rx.el.h3(
-                                    "Budget Control",
-                                    class_name="text-lg font-semibold text-gray-800 mb-2",
-                                ),
-                                rx.el.p(
-                                    "Set spending limits and monitor your subscription costs against your budget.",
-                                    class_name="text-gray-600 text-sm",
-                                ),
-                                class_name="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-indigo-100/50 hover:shadow-xl transition-all duration-300",
-                            ),
-                            class_name="grid grid-cols-1 md:grid-cols-2 gap-6",
+                                    class_name="bg-white rounded-xl p-2 shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center",
+                                )
+                                for url in logo_url
+                            ],
+                            class_name="grid grid-cols-6 gap-4 p-6",
                         ),
+                        class_name="bg-gradient-to-br from-white/80 to-indigo-50/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 relative overflow-hidden",
+                        style={
+                            "box-shadow": "0 0 40px rgba(79, 70, 229, 0.15), 0 0 80px rgba(79, 70, 229, 0.1)",
+                            "border-image": "linear-gradient(135deg, rgba(79, 70, 229, 0.3), rgba(147, 51, 234, 0.3)) 1",
+                        },
                     ),
                     class_name="hidden lg:flex items-center justify-center mb-24",
                 ),
