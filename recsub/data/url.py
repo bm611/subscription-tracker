@@ -24,7 +24,7 @@ logo_url = [
     "https://logo.clearbit.com/adobe.com",
     "https://logo.clearbit.com/microsoft.com",
     "https://logo.clearbit.com/slack.com",
-    "https://logo.clearbit.com/zoom.us",
+    "https://logo.clearbit.com/linear.app",
     "https://logo.clearbit.com/paramount.com",
     "https://logo.clearbit.com/hbo.com",
     "https://logo.clearbit.com/crunchyroll.com",

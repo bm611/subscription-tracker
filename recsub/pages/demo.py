@@ -25,14 +25,12 @@ def demo_page() -> rx.Component:
                 rx.el.div(
                     rx.el.button(
                         rx.icon("calendar", size=16, class_name="mr-2"),
-                        rx.el.span("Calendar View", class_name="hidden sm:inline"),
-                        rx.el.span("Cal", class_name="sm:hidden"),
+                        rx.el.span("Calendar View", class_name="sm:inline"),
                         class_name="px-3 md:px-4 py-2 border border-opacity-20 rounded-lg hover:bg-opacity-10 flex items-center text-sm font-medium transition-colors duration-200",
                     ),
                     rx.el.button(
                         rx.icon("plus", size=16, class_name="mr-2"),
-                        rx.el.span("Add Subscription", class_name="hidden sm:inline"),
-                        rx.el.span("Add", class_name="sm:hidden"),
+                        rx.el.span("Add Subscription", class_name="sm:inline"),
                         class_name="px-3 md:px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 flex items-center ml-2 text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl",
                     ),
                     class_name="flex items-center",
@@ -47,7 +45,6 @@ def demo_page() -> rx.Component:
                 stats_card("Due This Week", "0"),
                 class_name="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-10",
             ),
-            
             # Charts Section - Bento Style
             rx.el.div(
                 # Spending by Category - Large tile
@@ -80,8 +77,8 @@ def demo_page() -> rx.Component:
             rx.el.div(
                 rx.el.div(
                     rx.el.h2(
-                        "Active Subscriptions", 
-                        class_name="text-xl md:text-2xl font-bold mb-6"
+                        "Active Subscriptions",
+                        class_name="text-xl md:text-2xl font-bold mb-6",
                     ),
                     subscription_table(),
                     class_name="w-full",
