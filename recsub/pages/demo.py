@@ -57,7 +57,7 @@ def demo_page() -> rx.Component:
                         pie_chart(),
                         class_name="flex flex-col items-center h-full",
                     ),
-                    class_name="col-span-1 lg:col-span-1 p-4 md:p-6 backdrop-blur-md rounded-xl md:rounded-2xl border border-opacity-20 shadow-xl hover:shadow-2xl transition-all duration-300 min-h-[320px] md:min-h-[400px]",
+                    class_name="col-span-1 lg:col-span-1 p-4 md:p-6 rounded-xl md:rounded-2xl ring-1 ring-black/[0.65] shadow-lg bg-white hover:shadow-2xl transition-all duration-300 min-h-[320px] md:min-h-[400px]",
                 ),
                 # Monthly Spending Trend - Medium tile
                 rx.el.div(
@@ -69,7 +69,7 @@ def demo_page() -> rx.Component:
                         bar_chart(),
                         class_name="flex flex-col items-center h-full",
                     ),
-                    class_name="col-span-1 lg:col-span-1 p-4 md:p-6 backdrop-blur-md rounded-xl md:rounded-2xl border border-opacity-20 shadow-xl hover:shadow-2xl transition-all duration-300 min-h-[320px] md:min-h-[400px]",
+                    class_name="col-span-1 lg:col-span-1 p-4 md:p-6 rounded-xl md:rounded-2xl ring-1 ring-black/[0.65] shadow-lg bg-white hover:shadow-2xl transition-all duration-300 min-h-[320px] md:min-h-[400px]",
                 ),
                 class_name="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-10",
             ),
@@ -83,7 +83,7 @@ def demo_page() -> rx.Component:
                     subscription_table(),
                     class_name="w-full",
                 ),
-                class_name="p-4 md:p-6 lg:p-8 backdrop-blur-sm rounded-xl md:rounded-2xl border border-opacity-20 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-x-auto",
+                class_name="p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl ring-1 ring-black/[0.65] shadow-lg bg-white hover:shadow-2xl transition-all duration-300 overflow-x-auto",
             ),
             class_name="max-w-7xl mx-auto p-4 md:p-6 lg:p-8 min-h-screen",
         ),
